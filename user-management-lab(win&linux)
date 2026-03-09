@@ -1,0 +1,58 @@
+# User Management Lab (Windows & Linux)
+
+## Objective
+Practice creating a user, granting administrator privileges, verifying the account, and deleting the user in both Windows and Linux systems.
+
+---
+
+# Windows (PowerShell)
+
+## Create User
+New-LocalUser -Name "testuser" -Password (Read-Host -AsSecureString)
+
+## View Existing Users
+Get-LocalUser
+
+## Add User to Administrators Group
+Add-LocalGroupMember -Group "Administrators" -Member "testuser"
+
+## Verify Group Members
+Get-LocalGroupMember -Group "Administrators"
+
+## Run Command Prompt as the User
+runas /user:testuser cmd
+
+## Delete User
+Remove-LocalUser -Name "testuser"
+
+## Verify Deletion
+Get-LocalUser
+
+---
+
+# Linux (Kali)
+
+## Create User
+sudo adduser testuser
+
+## Set Password
+sudo passwd testuser
+
+## Add User to sudo Group (Administrator Privilege)
+sudo usermod -aG sudo testuser
+
+## Verify User Exists
+cat /etc/passwd
+
+## Delete User
+sudo deluser testuser
+
+---
+
+## Observation
+- A user account named **testuser** was successfully created.
+- Administrator privileges were assigned using the **Administrators group (Windows)** and **sudo group (Linux)**.
+- The user account was verified and then removed from the system.
+
+## Conclusion
+User management operations such as creating accounts, assigning privileges, verifying accounts, and deleting users are essential administrative tasks in both Windows and Linux operating systems.
